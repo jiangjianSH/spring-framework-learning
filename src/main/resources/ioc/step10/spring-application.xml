@@ -4,16 +4,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="com.together.learning.spring.ioc.step10.CollectionStorage">
+    <bean id="parent" abstract="true" class="com.together.learning.spring.ioc.step10.CollectionStorage">
         <property name="properties">
             <props>
-                <prop key="p1">p1-value</prop>
-                <prop key="p2">p2-value</prop>
+                <prop key="p1">parent-p1-value</prop>
+                <prop key="p2">parent-p2-value</prop>
             </props>
         </property>
 
         <property name="lists">
             <list>
+                <value>1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean parent="parent">
+        <property name="properties" >
+            <props merge="true">
+                <prop key="p1">child-p1-value-override</prop>
+                <prop key="p3">child-p3-value</prop>
+            </props>
+        </property>
+
+        <property name="lists">
+            <list merge="true">
                 <value>1</value>
                 <value>2</value>
                 <value>3</value>
