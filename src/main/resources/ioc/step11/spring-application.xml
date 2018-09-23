@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="shanghai" class="com.together.learning.spring.ioc.step11.Address">
+        <property name="address" value="shanghai"/>
+    </bean>
+
+    <bean id="hongkong" class="com.together.learning.spring.ioc.step11.Address">
+        <property name="address" value="hongkong"/>
+    </bean>
+
+    <bean id="user" class="com.together.learning.spring.ioc.step11.User"
+          c:name="jiangjian" c:age="26" c:sex="M" c:address-ref="shanghai"/>
+
+    <bean id="userByIndex" class="com.together.learning.spring.ioc.step11.User"
+          c:_0="alice" c:_1="28" c:_2="F" c:_3-ref="hongkong"/>
+</beans>
