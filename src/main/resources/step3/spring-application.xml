@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="appleFactory" class="com.together.learning.spring.step3.AppleFactory"/>
+
+    <!-- Note: 这里如果使用factory-bean来配置工厂类的话，则对应的工厂方法必须是非静态方法
+               请注意和下面iphone6s的配置对比学习
+     -->
+    <bean id="iphoneMax" factory-bean="appleFactory"
+          factory-method="createIphoneMax"/>
+
+    <bean id="iphone6s" class="com.together.learning.spring.step3.AppleFactory"
+          factory-method="createIphone6S"/>
+</beans>
