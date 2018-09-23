@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="no">
+
+    <bean id="food" class="com.together.learning.spring.ioc.step19.Food" scope="prototype">
+        <aop:scoped-proxy proxy-target-class="true"/>
+        <!--请注意配置上差异的意义
+            <aop:scoped-proxy proxy-target-class="false"/>
+        -->
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step19.Animal">
+        <property name="food" ref="food"/>
+    </bean>
+</beans>
