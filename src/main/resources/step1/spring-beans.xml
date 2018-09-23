@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    要点:
+        <1> bean的id命名规范应该遵循java field命名规范，使用camel-cased命名格式;
+
+        <2> bean定义时可以指定id，如果不指定，将由容器自动生成一个唯一的id来标识bean,
+            另外你也可以给一个bean取多个名字，其他的名字叫做“别名”，配置方式是通过name
+            属性来配置(用逗号、分号或者空格来区分多个别名)，可以参考如下userDao的配置;
+
+        <3>bean的id取名时要按照统一的风格，这样既方便阅读和理解，也可以简化aop切面的配置；
+    -->
+    <bean id="userDao" name="userDaoImpl;customUserDao" class="com.together.learning.spring.step1.UserDaoImpl"/>
+
+    <bean class="com.together.learning.spring.step1.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+        <!-- 因为userDao我们给了多个别名，所以上面property的配置如下方式也是可以的
+              <property name="userDao" ref="userDaoImpl"/>
+           或
+              <property name="userDao" ref="customUserDao"/>
+        -->
+    </bean>
+</beans>
