@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--下面的配置其实就是配置了PropertyPlaceHolderConfigurer, 我们可以配置它的查找策略，通过systemPropertiesMode属性
+        来了解，下面是spring 官方文档给出的说明:
+        The PropertyPlaceholderConfigurer not only looks for properties in the Properties file you specify.
+         By default, if it cannot find a property in the specified properties files,
+         it also checks against the Java System properties. You can customize this behavior by setting the
+         systemPropertiesMode property of the configurer with one of the following three supported integer values:
+
+            never (0): Never check system properties.
+
+            fallback (1): Check system properties if not resolvable in the specified properties files. This is the default.
+
+            override (2): Check system properties first, before trying the specified properties files.
+                            This lets system properties override any other property source.
+
+    -->
+    <context:property-placeholder location="classpath:ioc/step25/outer.properties"/>
+
+    <bean id="normal" class="com.together.learning.spring.ioc.step25.A">
+        <property name="bigDecimalVal" value="${bigDecimalVal}"/>
+        <property name="booleanVal" value="${booleanVal}"/>
+        <property name="doubleVal" value="${doubleVal}"/>
+        <property name="floatVal" value="${floatVal}"/>
+        <property name="intVal" value="${intVal}"/>
+        <property name="strVal" value="${strVal}"/>
+    </bean>
+
+    <!--请了解PropertyOverrideConfigurer-->
+    <context:property-override location="classpath:ioc/step25/bean-config.properties"/>
+
+    <bean id="aBean" class="com.together.learning.spring.ioc.step25.A" autowire="byName"/>
+</beans>
