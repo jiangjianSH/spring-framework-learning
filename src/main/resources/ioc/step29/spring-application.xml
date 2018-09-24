@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+
+    <bean class="com.together.learning.spring.ioc.step29.Meeting"/>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="张三"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Chinese"/>
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="李四"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Chinese"/>
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="王五"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Chinese"/>
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="はると"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Japanese"/>
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="ひなた"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Japanese"/>
+    </bean>
+
+    <bean class="com.together.learning.spring.ioc.step29.People">
+        <constructor-arg name="name" value="れお"/>
+        <qualifier type="com.together.learning.spring.ioc.step29.Japanese"/>
+    </bean>
+</beans>
