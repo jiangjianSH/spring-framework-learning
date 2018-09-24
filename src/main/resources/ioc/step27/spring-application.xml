@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--请注意，这里仅仅配置这个annotation-config其实是不生效的，因为@Required在当前版本已经被废弃了，
+    并没有显示的配置RequiredAnnotationBeanPostProcessor，所以得自己手动配置，在当前的例子中，本项配置
+    其实没有什么效果的-->
+    <context:annotation-config />
+
+    <!--<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />-->
+
+    <bean class="com.together.learning.spring.ioc.step27.A">
+        <!-- 是应用不报错，请将下面被注释掉的配置生效-->
+        <!--<property name="b" ref="b"/>-->
+    </bean>
+
+    <bean id="b" class="com.together.learning.spring.ioc.step27.B"/>
+</beans>
