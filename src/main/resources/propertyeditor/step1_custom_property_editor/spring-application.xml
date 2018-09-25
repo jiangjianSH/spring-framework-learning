@@ -6,4 +6,7 @@
     <bean class="com.together.learning.spring.propertyeditor.step1_custom_property_editor.B">
         <property name="a" value="jiangjian"/>
     </bean>
+
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean"/>
 </beans>
