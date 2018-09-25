@@ -18,7 +18,7 @@ public class B implements Ordered {
 
     @Override
     public String toString() {
-        return "B{" +
+        return "AFactoryBean{" +
                 "order=" + order +
                 ", value='" + value + '\'' +
                 '}';
