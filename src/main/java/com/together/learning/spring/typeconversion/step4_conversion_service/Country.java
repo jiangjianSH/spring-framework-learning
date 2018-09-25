@@ -3,10 +3,10 @@ package com.together.learning.spring.typeconversion.step4_conversion_service;
 /**
  * @author jiangjian
  */
-public class People {
+public class Country {
     private String name;
 
-    public People(String name, String optional) {
+    public Country(String name) {
         this.name = name;
     }
 
@@ -20,7 +20,7 @@ public class People {
 
     @Override
     public String toString() {
-        return "People{" +
+        return "Country{" +
                 "name='" + name + '\'' +
                 '}';
     }
