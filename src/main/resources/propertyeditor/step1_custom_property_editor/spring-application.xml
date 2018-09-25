@@ -7,6 +7,6 @@
         <property name="a" value="jiangjian"/>
     </bean>
 
-    <bean id="conversionService"
-          class="org.springframework.context.support.ConversionServiceFactoryBean"/>
+    <!--<bean id="conversionService"-->
+          <!--class="org.springframework.context.support.ConversionServiceFactoryBean"/>-->
 </beans>
