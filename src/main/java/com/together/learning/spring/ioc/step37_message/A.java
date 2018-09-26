@@ -25,4 +25,8 @@ public class A {
     public void output(Locale locale) {
         System.out.println(messageSource.getMessage("author.name", null, locale));
     }
+
+    public void output(String message, Locale locale) {
+        System.out.println(messageSource.getMessage(message, null, locale));
+    }
 }

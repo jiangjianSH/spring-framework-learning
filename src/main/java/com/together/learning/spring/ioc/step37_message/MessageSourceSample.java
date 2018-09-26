@@ -15,5 +15,7 @@ public class MessageSourceSample {
         a.output(null);
         a.output(Locale.CHINESE);
         a.output(Locale.ENGLISH);
+
+        a.output("author.age", Locale.CHINESE);
     }
 }

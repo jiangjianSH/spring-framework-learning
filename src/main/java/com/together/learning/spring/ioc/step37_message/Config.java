@@ -17,7 +17,7 @@ public class Config {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("ioc/step37_message/message");
         messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setUseCodeAsDefaultMessage(true);
+        messageSource.setUseCodeAsDefaultMessage(true);//use for debug
         return messageSource;
     }
 }
