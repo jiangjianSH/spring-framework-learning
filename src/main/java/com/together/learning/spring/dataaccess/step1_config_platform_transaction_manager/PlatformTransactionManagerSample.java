@@ -12,6 +12,12 @@ public class PlatformTransactionManagerSample {
     public static void main(String[] args) {
         ApplicationContext ac = new AnnotationConfigApplicationContext(DataSourceConfig.class);
         FooService fooService = ac.getBean(FooService.class);
-        fooService.updateFoo(new Foo());
+        try {
+            fooService.updateFoo(new Foo());
+        }catch (Exception e) {}
+
+        try {
+            fooService.insertFoo(new Foo());
+        }catch (Exception e){}
     }
 }
