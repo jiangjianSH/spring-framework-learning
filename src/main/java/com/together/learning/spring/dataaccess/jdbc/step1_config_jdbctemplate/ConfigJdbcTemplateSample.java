@@ -12,7 +12,7 @@ public class ConfigJdbcTemplateSample {
         ApplicationContext ac = new AnnotationConfigApplicationContext(Config.class);
         JdbcTemplate jdbcTemplate = ac.getBean(JdbcTemplate.class);
 
-        jdbcTemplate.execute("drop table user");
+        jdbcTemplate.execute("drop table if exists user  ");
         jdbcTemplate.execute("create table user(id int auto_increment primary key, name varchar(40))");
 
         jdbcTemplate.execute("drop table user");
