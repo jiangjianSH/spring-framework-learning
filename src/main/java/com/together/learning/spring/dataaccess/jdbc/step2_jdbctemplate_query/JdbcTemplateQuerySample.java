@@ -1,6 +1,5 @@
 package com.together.learning.spring.dataaccess.jdbc.step2_jdbctemplate_query;
 
-import com.together.learning.spring.dataaccess.jdbc.step1_config_jdbctemplate.Config;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
