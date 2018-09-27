@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+
+
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:dataaccess/step3_transaction_event_listener/jdbc.properties"/>
+
+    <!-- this is the service object that we want to make transactional -->
+    <bean id="fooService" class="com.together.learning.spring.dataaccess.step3_transaction_event_listener.service.DefaultFooService"/>
+
+    <!--<tx:annotation-driven />-->
+
+    <!--&lt;!&ndash; the transactional advice (what 'happens'; see the <aop:advisor/> bean below) &ndash;&gt;-->
+    <!--<tx:advice id="txAdvice" transaction-manager="txManager">-->
+        <!--&lt;!&ndash; the transactional semantics... &ndash;&gt;-->
+        <!--<tx:attributes>-->
+            <!--&lt;!&ndash; all methods starting with 'get' are read-only &ndash;&gt;-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+            <!--&lt;!&ndash; other methods use the default transaction settings (see below) &ndash;&gt;-->
+            <!--<tx:method name="insert*"/>-->
+            <!--<tx:method name="update*" no-rollback-for="java.lang.UnsupportedOperationException"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--&lt;!&ndash; ensure that the above transactional advice runs for any execution-->
+        <!--of an operation defined by the FooService interface &ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="fooServiceOperation" expression="execution(* com.together.learning.spring.dataaccess.step3_transaction_event_listener.service.FooService.*(..))"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation"/>-->
+    <!--</aop:config>-->
+
+    <!--&lt;!&ndash; don't forget the DataSource &ndash;&gt;-->
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="${spring.datasource.driver-class-name}"/>-->
+        <!--<property name="url" value="${spring.datasource.url}"/>-->
+        <!--<property name="username" value="${spring.datasource.username}"/>-->
+        <!--<property name="password" value="${spring.datasource.password}"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; similarly, don't forget the PlatformTransactionManager &ndash;&gt;-->
+    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--&lt;!&ndash;validateExistingTransaction属性的意思如下:-->
+            <!--By default, a participating transaction joins the characteristics of the outer scope,-->
+            <!--silently ignoring the local isolation level, timeout value, or read-only flag (if any).-->
+            <!--Consider switching the validateExistingTransactions flag to true on your transaction-->
+            <!--manager if you want isolation level declarations to be rejected when participating-->
+            <!--in an existing transaction with a different isolation level. This non-lenient mode-->
+            <!--also rejects read-only mismatches (that is, an inner read-write transaction that tries-->
+            <!--to participate in a read-only outer scope).-->
+        <!--&ndash;&gt;-->
+        <!--<property name="validateExistingTransaction" value="true"/>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; other <bean/> definitions here &ndash;&gt;-->
+
+</beans>
