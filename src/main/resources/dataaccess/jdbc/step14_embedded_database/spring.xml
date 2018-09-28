@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <jdbc:embedded-database id="dataSource" generate-name="true" type="HSQL"/>
+
+    <!--
+        The ignore-failures option can be set to
+         NONE (the default), DROPS (ignore failed drops), or ALL (ignore all failures).
+
+     Each statement should be separated by ; or a new line if the ;
+      character is not present at all in the script.
+       You can control that globally or script by script, as the following example shows:
+     -->
+    <jdbc:initialize-database data-source="dataSource" enabled="true" ignore-failures="DROPS" separator=";">
+        <!-- The script locations can also be patterns with wildcards in the usual
+         Ant style used for resources in Spring (for example, classpath*:/com/foo/**/sql/*-data.sql).
+         If you use a pattern, the scripts are run in the lexical order of their URL or filename.
+        -->
+        <jdbc:script location="classpath:dataaccess/jdbc/step14_embedded_database/schema.sql" separator=";"/>
+        <jdbc:script location="classpath:dataaccess/jdbc/step14_embedded_database/data.sql"/>
+    </jdbc:initialize-database>
+</beans>
